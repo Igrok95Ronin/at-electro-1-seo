@@ -28,6 +28,10 @@ a {
     display: inline-block;
 }
 
+a:hover {
+    color: #fff;
+}
+
 .container {
     max-width: var(--maxWidth);
     margin: 0 auto;

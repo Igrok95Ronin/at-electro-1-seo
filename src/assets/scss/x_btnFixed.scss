@@ -2,41 +2,265 @@
     display: none;
     position: fixed;
     bottom: 0;
+    left: 0;
+    right: 0;
     width: 100%;
-    padding: 0;
-    margin-bottom: 10px;
+    padding: 0 15px 15px;
+    z-index: 1000;
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.95), transparent);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
+
 .btnFixed__box {
-}
-.btnFixed__btn {
-    @include btn;
-    background-color: var(--btnColorFixed);
-    width: 100%;
-    text-align: center;
-    padding: 16px 15px;
-    border-radius: 0;
-    &::after{
+    position: relative;
+    
+    &::before {
         content: '';
         position: absolute;
-        right: 10px;
-        top: 5px;
-        font-size: 12px;
+        top: -5px;
+        left: -5px;
+        right: -5px;
+        bottom: -5px;
+        background: linear-gradient(135deg, var(--mainColor), #2d7d2a);
+        border-radius: 18px;
+        opacity: 0.1;
+        animation: glow 3s ease-in-out infinite alternate;
+    }
+}
+
+.btnFixed__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: linear-gradient(135deg, var(--mainColor), #2d7d2a);
+    color: #fff;
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 18px;
+    width: 100%;
+    text-align: center;
+    padding: 18px 20px;
+    border-radius: 14px;
+    border: none;
+    text-decoration: none;
+    box-shadow: 
+        0 8px 25px rgba(57, 157, 52, 0.3),
+        0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    
+    span {
+        position: relative;
+        z-index: 2;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+    }
+    
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left 0.6s;
+        z-index: 1;
+    }
+    
+    &::after {
+        content: '';
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 22px;
+        height: 22px;
+        background-image: url('../icons/telephone-fill.svg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        filter: brightness(0) invert(1);
+        z-index: 2;
+        transition: transform 0.3s ease;
+    }
+    
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 
+            0 12px 35px rgba(57, 157, 52, 0.4),
+            0 6px 18px rgba(0, 0, 0, 0.2);
+        
+        &::before {
+            left: 100%;
+        }
+        
+        &::after {
+            transform: translateY(-50%) scale(1.2);
+        }
+    }
+    
+    &:active {
+        transform: translateY(-1px);
+        box-shadow: 
+            0 6px 20px rgba(57, 157, 52, 0.3),
+            0 3px 10px rgba(0, 0, 0, 0.15);
+    }
+}
+
+// Анимация свечения
+@keyframes glow {
+    0% {
+        opacity: 0.1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0.2;
+        transform: scale(1.02);
+    }
+}
+
+// Показать на мобильных устройствах
+@media (max-width: 768px) {
+    .btnFixed {
+        display: block;
+    }
+    
+    .btnFixed__btn {
+        font-size: 16px;
+        padding: 16px 18px;
+        
+        &::after {
+            width: 20px;
+            height: 20px;
+            right: 18px;
+        }
     }
 }
 .btnFixedD {
     position: fixed;
-    bottom: 20px;
-    right: 10px;
+    bottom: 25px;
+    right: 25px;
+    z-index: 1000;
+    animation: pulse 2s infinite;
 }
+
 .btnFixedD__box {
+    position: relative;
+    
+    &::before {
+        content: '';
+        position: absolute;
+        top: -8px;
+        left: -8px;
+        right: -8px;
+        bottom: -8px;
+        background: var(--mainColor);
+        border-radius: 50%;
+        opacity: 0.2;
+        animation: ripple 2s infinite;
+    }
 }
+
 .btnFixedD__btn {
-    background-color: var(--btnColorFixed);
-    padding: 10px;
-    border-radius: 50px;
-    width: 38px;
-    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--mainColor), #2d7d2a);
+    padding: 0;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    box-shadow: 
+        0 8px 25px rgba(57, 157, 52, 0.3),
+        0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #fff;
+    
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        transition: left 0.5s;
+    }
+    
+    &:hover {
+        transform: scale(1.1) translateY(-2px);
+        box-shadow: 
+            0 12px 35px rgba(57, 157, 52, 0.4),
+            0 6px 18px rgba(0, 0, 0, 0.2);
+        
+        &::before {
+            left: 100%;
+        }
+    }
+    
+    &:active {
+        transform: scale(1.05);
+        box-shadow: 
+            0 6px 20px rgba(57, 157, 52, 0.3),
+            0 3px 10px rgba(0, 0, 0, 0.15);
+    }
 }
-.btnFixedD__img{
-    width: 100%;
+
+.btnFixedD__img {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1);
+    transition: transform 0.2s ease;
+    
+    .btnFixedD__btn:hover & {
+        transform: scale(1.1);
+    }
+}
+
+// Анимации
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(1);
+        opacity: 0.2;
+    }
+    50% {
+        transform: scale(1.3);
+        opacity: 0.1;
+    }
+    100% {
+        transform: scale(1.6);
+        opacity: 0;
+    }
+}
+
+// Мобильная адаптация
+@media (max-width: 768px) {
+    .btnFixedD {
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .btnFixedD__btn {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .btnFixedD__img {
+        width: 20px;
+        height: 20px;
+    }
 }
