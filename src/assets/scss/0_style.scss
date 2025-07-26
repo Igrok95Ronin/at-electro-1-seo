@@ -1,9 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 * {
     box-sizing: border-box;
 }
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -21,72 +22,159 @@ time, mark, audio, video {
 	padding: 0;
 	border: 0;
 }
-a{
+
+a {
     text-decoration: none;
     display: inline-block;
 }
+
 .container {
     max-width: var(--maxWidth);
     margin: 0 auto;
     padding: 0 15px;
 }
+
 .containerP0 {
     max-width: var(--maxWidth);
     margin: 0 auto;
     padding: 0;
 }
+
 body {
     margin: auto;
     padding: 0;
-    font-family: 'Inter', Arial, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
     font-size: 16px;
+    line-height: 1.6;
     max-width: 1920px;
     min-width: 320px;
     color: #222;
+    font-feature-settings: 'liga' 1, 'kern' 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-:root{
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+}
+
+:root {
     --maxWidth: 1200px;
     --btnColorFixed: #000;
-    --mainColor: #399d34
+    --mainColor: #399d34;
+    
+    // Typography
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    
+    // Shadows
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
-@mixin h1Title{
+// Улучшенные миксины
+@mixin h1Title {
+    font-family: var(--font-heading);
     font-weight: 700;
-    font-size: clamp(32px, 5vw, 40px);
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
     margin: 0;
 }
+
 @mixin h2Title {
-    font-size: clamp(28px, 5vw, 32px);
+    font-family: var(--font-heading);
+    font-size: clamp(24px, 4vw, 36px);
     font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
     margin: 0;
 }
+
+@mixin h3Title {
+    font-family: var(--font-heading);
+    font-size: clamp(20px, 3vw, 28px);
+    font-weight: 600;
+    line-height: 1.3;
+    margin: 0;
+}
+
 @mixin btn {
     background-color: var(--mainColor);
     color: #fff;
-    font-weight: 700;
-    letter-spacing: 1px;
-    font-size: 20px;
-    padding: 10px 30px 10px 50px;
-    border-radius: 10px;
-    transition: .3s;
-    span{
+    font-family: var(--font-primary);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    font-size: 18px;
+    padding: 12px 32px 12px 52px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow-md);
     position: relative;
-        &::before{
+    overflow: hidden;
+    
+    span {
+        position: relative;
+        z-index: 2;
+        
+        &::before {
             content: '';
             position: absolute;
             background-image: url('../icons/telephone-fill.svg');
             background-size: cover;
             background-repeat: no-repeat;
-            width: 20px;
+            width: 22px;
             aspect-ratio: 1;
-            left: -45px;
+            left: -40px;
             top: 50%;
             transform: translateY(-50%);
+            filter: brightness(0) invert(1);
         }
     }
-    &:hover{
-        background-color: #0f426e;
-        color: #fff;
+    
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left 0.5s;
+        z-index: 1;
+    }
+    
+    &:hover {
+        background-color: #2d7d2a;
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+        
+        &::before {
+            left: 100%;
+        }
+    }
+    
+    &:active {
+        transform: translateY(0);
+        box-shadow: var(--shadow-md);
     }
 }
+
+// Дополнительные утилиты
+.text-gradient {
+    background: linear-gradient(135deg, var(--mainColor), #2d7d2a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.smooth-scroll {
+    scroll-behavior: smooth;
+} 
