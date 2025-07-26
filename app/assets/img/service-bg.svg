@@ -1,0 +1,131 @@
+<svg width="1400" height="800" viewBox="0 0 1400 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="serviceGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#399d34;stop-opacity:0.08" />
+      <stop offset="100%" style="stop-color:#2d7d2a;stop-opacity:0.04" />
+    </linearGradient>
+    <linearGradient id="serviceGradient2" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2d7d2a;stop-opacity:0.06" />
+      <stop offset="100%" style="stop-color:#399d34;stop-opacity:0.02" />
+    </linearGradient>
+    <pattern id="circuitPattern" x="0" y="0" width="200" height="200" patternUnits="userSpaceOnUse">
+      <!-- Горизонтальные линии -->
+      <line x1="0" y1="50" x2="200" y2="50" stroke="#399d34" stroke-width="0.8" opacity="0.25"/>
+      <line x1="0" y1="150" x2="200" y2="150" stroke="#2d7d2a" stroke-width="0.8" opacity="0.2"/>
+      
+      <!-- Вертикальные линии -->
+      <line x1="50" y1="0" x2="50" y2="200" stroke="#399d34" stroke-width="0.8" opacity="0.22"/>
+      <line x1="150" y1="0" x2="150" y2="200" stroke="#2d7d2a" stroke-width="0.8" opacity="0.18"/>
+      
+      <!-- Узлы соединений -->
+      <circle cx="50" cy="50" r="2.5" fill="#399d34" opacity="0.3"/>
+      <circle cx="150" cy="50" r="2" fill="#2d7d2a" opacity="0.25"/>
+      <circle cx="50" cy="150" r="2" fill="#2d7d2a" opacity="0.25"/>
+      <circle cx="150" cy="150" r="2.5" fill="#399d34" opacity="0.3"/>
+      
+      <!-- Диагональные соединения -->
+      <line x1="50" y1="50" x2="150" y2="150" stroke="#399d34" stroke-width="0.3" opacity="0.08"/>
+      <line x1="150" y1="50" x2="50" y2="150" stroke="#2d7d2a" stroke-width="0.3" opacity="0.06"/>
+    </pattern>
+    
+    <!-- Фильтр для свечения -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Основные градиентные области -->
+  <ellipse cx="200" cy="150" rx="300" ry="200" fill="url(#serviceGradient1)" opacity="0.3"/>
+  <ellipse cx="1200" cy="650" rx="250" ry="150" fill="url(#serviceGradient2)" opacity="0.4"/>
+  <ellipse cx="700" cy="400" rx="400" ry="100" fill="url(#serviceGradient1)" opacity="0.2"/>
+  
+  <!-- Паттерн схемы -->
+  <rect width="1400" height="800" fill="url(#circuitPattern)" opacity="0.6"/>
+  
+  <!-- Абстрактные электрические элементы -->
+  
+  <!-- Большие соединительные линии -->
+  <path d="M100 100 Q350 200 600 150 T1100 200" 
+        stroke="#399d34" 
+        stroke-width="1" 
+        fill="none" 
+        opacity="0.1"/>
+  
+  <path d="M300 600 Q700 500 1000 550 T1300 500" 
+        stroke="#2d7d2a" 
+        stroke-width="0.8" 
+        fill="none" 
+        opacity="0.08"/>
+  
+  <!-- Микросхемы (прямоугольники) -->
+  <rect x="200" y="300" width="40" height="20" 
+        fill="none" 
+        stroke="#399d34" 
+        stroke-width="0.5" 
+        opacity="0.15"/>
+  
+  <rect x="800" y="150" width="30" height="15" 
+        fill="none" 
+        stroke="#2d7d2a" 
+        stroke-width="0.4" 
+        opacity="0.12"/>
+  
+  <rect x="1050" y="450" width="35" height="18" 
+        fill="none" 
+        stroke="#399d34" 
+        stroke-width="0.5" 
+        opacity="0.1"/>
+  
+  <!-- Конденсаторы (параллельные линии) -->
+  <g opacity="0.1">
+    <line x1="450" y1="250" x2="450" y2="270" stroke="#399d34" stroke-width="1"/>
+    <line x1="455" y1="250" x2="455" y2="270" stroke="#399d34" stroke-width="1"/>
+  </g>
+  
+  <g opacity="0.08">
+    <line x1="950" y1="380" x2="950" y2="395" stroke="#2d7d2a" stroke-width="0.8"/>
+    <line x1="954" y1="380" x2="954" y2="395" stroke="#2d7d2a" stroke-width="0.8"/>
+  </g>
+  
+  <!-- Резисторы (зигзаги) -->
+  <path d="M600 350 L605 345 L610 355 L615 345 L620 355 L625 345 L630 350" 
+        stroke="#399d34" 
+        stroke-width="0.6" 
+        fill="none" 
+        opacity="0.12"/>
+  
+  <path d="M350 500 L355 495 L360 505 L365 495 L370 505 L375 495 L380 500" 
+        stroke="#2d7d2a" 
+        stroke-width="0.5" 
+        fill="none" 
+        opacity="0.09"/>
+  
+  <!-- Точки подключения -->
+  <circle cx="300" cy="200" r="3" fill="#399d34" opacity="0.15"/>
+  <circle cx="750" cy="300" r="2.5" fill="#2d7d2a" opacity="0.12"/>
+  <circle cx="500" cy="500" r="2" fill="#399d34" opacity="0.1"/>
+  <circle cx="1100" cy="350" r="3" fill="#2d7d2a" opacity="0.15"/>
+  
+  <!-- Анимированные элементы -->
+  <circle cx="150" cy="150" r="1" fill="#399d34" opacity="0.3">
+    <animate attributeName="opacity" values="0.3;0.8;0.3" dur="4s" repeatCount="indefinite"/>
+  </circle>
+  
+  <circle cx="1250" cy="600" r="1.5" fill="#2d7d2a" opacity="0.2">
+    <animate attributeName="opacity" values="0.2;0.6;0.2" dur="5s" repeatCount="indefinite"/>
+  </circle>
+  
+  <circle cx="700" cy="250" r="1" fill="#399d34" opacity="0.25">
+    <animate attributeName="opacity" values="0.25;0.7;0.25" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Дополнительные декоративные линии -->
+  <line x1="0" y1="100" x2="150" y2="80" stroke="#399d34" stroke-width="0.3" opacity="0.06"/>
+  <line x1="1250" y1="200" x2="1400" y2="180" stroke="#2d7d2a" stroke-width="0.3" opacity="0.05"/>
+  <line x1="50" y1="700" x2="200" y2="750" stroke="#399d34" stroke-width="0.4" opacity="0.07"/>
+  <line x1="1200" y1="100" x2="1350" y2="50" stroke="#2d7d2a" stroke-width="0.3" opacity="0.04"/>
+</svg> 
