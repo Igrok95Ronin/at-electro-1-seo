@@ -1,0 +1,402 @@
+.eCheck {
+  padding: 100px 0;
+  background: 
+    linear-gradient(135deg, #f8fffe 0%, #f1f8f1 50%, #ffffff 100%);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      url('../img/Stef_icons_alle_Elektrobefund.svg') 5% 15% / 120px 120px no-repeat,
+      url('../img/Stef_icons_alle_Geraetepruefung-Kopie.svg') 95% 85% / 100px 100px no-repeat,
+      radial-gradient(circle at 20% 30%, rgba(57, 157, 52, 0.02) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(45, 125, 42, 0.015) 0%, transparent 35%);
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  
+  // Декоративные "печати" безопасности
+  &::after {
+    content: '✓';
+    position: absolute;
+    top: 15%;
+    right: 10%;
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle, rgba(57, 157, 52, 0.1), transparent 70%);
+    border: 3px solid rgba(57, 157, 52, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: var(--mainColor);
+    font-weight: bold;
+    transform: rotate(-15deg);
+    opacity: 0.6;
+  }
+}
+
+.eCheck__box {
+  display: flex;
+  align-items: flex-start;
+  gap: 60px;
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+  padding: 50px;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.06),
+    0 8px 16px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(57, 157, 52, 0.1);
+  
+  // Стилизация под документ с перфорацией
+  &::before {
+    content: '';
+    position: absolute;
+    left: 40px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: 
+      repeating-linear-gradient(
+        to bottom,
+        rgba(57, 157, 52, 0.2) 0px,
+        rgba(57, 157, 52, 0.2) 8px,
+        transparent 8px,
+        transparent 16px
+      );
+  }
+}
+
+.eCheck__left {
+  flex: 2;
+  max-width: 700px;
+  padding-left: 30px;
+}
+
+.eCheck__title {
+  @include h2Title;
+  color: #1a1a1a;
+  margin-bottom: 30px;
+  position: relative;
+  padding-left: 25px;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+    background: linear-gradient(180deg, var(--mainColor), #2d7d2a);
+    border-radius: 3px;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 25px;
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--mainColor), #2d7d2a);
+    border-radius: 2px;
+  }
+}
+
+.eCheck__subTitle {
+  @include h3Title;
+  color: #2d7d2a;
+  margin: 40px 0 20px 0;
+  position: relative;
+  padding: 15px 20px;
+  background: linear-gradient(135deg, rgba(57, 157, 52, 0.05), rgba(45, 125, 42, 0.03));
+  border-radius: 8px;
+  border-left: 4px solid var(--mainColor);
+  
+
+}
+
+.eCheck__txt {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #555;
+  margin: 0 0 20px 0;
+  position: relative;
+  padding-left: 20px;
+  
+  // Нумерация параграфов
+  counter-increment: paragraph-counter;
+  
+  &::before {
+    content: counter(paragraph-counter, decimal) '.';
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: 600;
+    color: var(--mainColor);
+    font-size: 14px;
+  }
+  
+  // Улучшенная типографика
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: justify;
+  
+  // Выделение важных моментов
+  &:nth-of-type(2),
+  &:nth-of-type(5) {
+    background: rgba(57, 157, 52, 0.03);
+    padding: 15px 20px 15px 40px;
+    border-radius: 8px;
+    border-left: 3px solid rgba(57, 157, 52, 0.3);
+    
+    &::before {
+      left: 20px;
+    }
+  }
+}
+
+// Инициализация счетчика
+.eCheck__left {
+  counter-reset: paragraph-counter;
+}
+
+.eCheck__imgWrp {
+  flex: 1;
+  position: relative;
+  max-width: 350px;
+  
+  // Стилизация под сертификат
+  &::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    right: -15px;
+    bottom: -15px;
+    background: 
+      linear-gradient(45deg, transparent 10px, rgba(57, 157, 52, 0.1) 10px, rgba(57, 157, 52, 0.1) calc(100% - 10px), transparent calc(100% - 10px)),
+      linear-gradient(-45deg, transparent 10px, rgba(45, 125, 42, 0.05) 10px, rgba(45, 125, 42, 0.05) calc(100% - 10px), transparent calc(100% - 10px));
+    z-index: -1;
+  }
+  
+  // Декоративная рамка
+  &::after {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    border: 2px solid rgba(57, 157, 52, 0.2);
+    border-radius: 12px;
+    z-index: -1;
+  }
+}
+
+.eCheck__img {
+  width: 100%;
+  height: auto;
+  max-height: 350px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  box-shadow: 
+    0 12px 30px rgba(0, 0, 0, 0.08),
+    0 6px 15px rgba(0, 0, 0, 0.06);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  &:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 
+      0 20px 50px rgba(0, 0, 0, 0.12),
+      0 10px 25px rgba(0, 0, 0, 0.08);
+  }
+}
+
+// Дополнительные декоративные элементы безопасности
+.eCheck {
+  // Добавляем "штампы" безопасности
+  &::before {
+    background-image: 
+      url('../img/Stef_icons_alle_Elektrobefund.svg'),
+      url('../img/Stef_icons_alle_Geraetepruefung-Kopie.svg'),
+      radial-gradient(circle at 15% 80%, rgba(57, 157, 52, 0.02), transparent 30%),
+      radial-gradient(circle at 85% 20%, rgba(45, 125, 42, 0.015), transparent 25%);
+    background-position: 
+      5% 15%,
+      95% 85%,
+      0 0,
+      0 0;
+    background-size: 
+      120px 120px,
+      100px 100px,
+      100% 100%,
+      100% 100%;
+  }
+}
+
+// Responsive design
+@media (max-width: 992px) {
+  .eCheck {
+    padding: 80px 0;
+  }
+  
+  .eCheck__box {
+    gap: 40px;
+    padding: 40px 30px;
+  }
+  
+  .eCheck__title {
+    font-size: clamp(22px, 4vw, 32px);
+    margin-bottom: 25px;
+  }
+  
+  .eCheck__subTitle {
+    font-size: clamp(18px, 3vw, 24px);
+    margin: 30px 0 15px 0;
+    padding: 12px 15px;
+  }
+  
+  .eCheck__txt {
+    font-size: 15px;
+    padding-left: 18px;
+    
+    &:nth-of-type(2),
+    &:nth-of-type(5) {
+      padding: 12px 15px 12px 35px;
+      
+      &::before {
+        left: 15px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .eCheck {
+    padding: 60px 0;
+    
+    &::after {
+      display: none;
+    }
+  }
+  
+  .eCheck__box {
+    flex-direction: column;
+    gap: 40px;
+    padding: 30px 20px;
+    
+    &::before {
+      display: none;
+    }
+  }
+  
+  .eCheck__left {
+    max-width: 100%;
+    padding-left: 0;
+  }
+  
+  .eCheck__title {
+    text-align: center;
+    padding-left: 0;
+    
+    &::before {
+      display: none;
+    }
+    
+    &::after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  
+  .eCheck__subTitle {
+    text-align: center;
+  }
+  
+  .eCheck__txt {
+    text-align: left;
+    padding-left: 20px;
+    font-size: 14px;
+    
+    &:nth-of-type(2),
+    &:nth-of-type(5) {
+      padding: 10px 15px 10px 35px;
+    }
+  }
+  
+  .eCheck__imgWrp {
+    max-width: 280px;
+    margin: 0 auto;
+    
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
+  
+  .eCheck__img {
+    max-height: 280px;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .eCheck {
+    padding: 50px 0;
+  }
+  
+  .eCheck__box {
+    padding: 25px 15px;
+    border-radius: 15px;
+  }
+  
+  .eCheck__title {
+    font-size: clamp(20px, 6vw, 26px);
+    margin-bottom: 20px;
+  }
+  
+  .eCheck__subTitle {
+    font-size: clamp(16px, 4vw, 20px);
+    margin: 25px 0 12px 0;
+    padding: 10px 12px;
+  }
+  
+  .eCheck__txt {
+    font-size: 13px;
+    line-height: 1.6;
+    padding-left: 18px;
+    margin-bottom: 15px;
+    
+    &:nth-of-type(2),
+    &:nth-of-type(5) {
+      padding: 8px 12px 8px 30px;
+      
+      &::before {
+        left: 12px;
+      }
+    }
+  }
+  
+  .eCheck__imgWrp {
+    max-width: 250px;
+  }
+  
+  .eCheck__img {
+    max-height: 250px;
+    padding: 12px;
+  }
+}
