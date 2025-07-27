@@ -1,0 +1,442 @@
+.review {
+  padding: 100px 0;
+  background: 
+    linear-gradient(135deg, #fafafa 0%, #ffffff 40%, #fef7ed 100%);
+  position: relative;
+  overflow: hidden;
+  
+  // Декоративный фон с паттерном звёзд
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 30%, rgba(245, 158, 11, 0.025) 0%, transparent 40%),
+      radial-gradient(circle at 80% 20%, rgba(245, 158, 11, 0.02) 0%, transparent 35%),
+      radial-gradient(circle at 40% 80%, rgba(245, 158, 11, 0.015) 0%, transparent 30%);
+    pointer-events: none;
+  }
+  
+  // Декоративные звёзды
+  &::after {
+    content: '⭐';
+    position: absolute;
+    top: 15%;
+    left: 8%;
+    font-size: 32px;
+    opacity: 0.15;
+    animation: star-twinkle 3s ease-in-out infinite;
+  }
+}
+
+@keyframes star-twinkle {
+  0%, 100% { 
+    transform: scale(1) rotate(0deg); 
+    opacity: 0.15; 
+  }
+  50% { 
+    transform: scale(1.2) rotate(10deg); 
+    opacity: 0.3; 
+  }
+}
+
+.rewiews__box {
+  position: relative;
+  z-index: 2;
+}
+
+.reviews__title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 60px 0;
+  line-height: 1.2;
+  text-align: center;
+  position: relative;
+  font-family: var(--font-heading);
+  
+  // Декоративная линия под заголовком
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: 
+      linear-gradient(90deg, 
+        #f59e0b 0%, 
+        #d97706 50%, 
+        #f59e0b 100%
+      );
+    border-radius: 2px;
+  }
+  
+  // Улучшенная типографика
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.reviews__wrp {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.review-card {
+  background: 
+    linear-gradient(135deg, 
+      rgba(255, 255, 255, 0.95) 0%, 
+      rgba(254, 247, 237, 0.9) 100%
+    );
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 
+    0 10px 30px rgba(245, 158, 11, 0.08),
+    0 4px 15px rgba(245, 158, 11, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(245, 158, 11, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  
+  // Декоративная полоска сверху
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: 
+      linear-gradient(90deg, 
+        #f59e0b 0%, 
+        #d97706 50%, 
+        #f59e0b 100%
+      );
+  }
+  
+  // Эффект наведения
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 
+      0 20px 40px rgba(245, 158, 11, 0.12),
+      0 8px 25px rgba(245, 158, 11, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    border-color: rgba(245, 158, 11, 0.2);
+  }
+}
+
+.review-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.review__wrp {
+  margin-bottom: 15px;
+  
+  h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0 0 5px 0;
+    font-family: var(--font-heading);
+    position: relative;
+    
+    // Маленькая иконка пользователя
+    &::before {
+      content: '👤';
+      font-size: 16px;
+      margin-right: 8px;
+      opacity: 0.7;
+    }
+  }
+}
+
+.review-service {
+  font-size: 14px;
+  font-weight: 500;
+  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.1);
+  padding: 4px 12px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 15px;
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  
+  // Иконка услуги
+  &::before {
+    content: '🔧';
+    font-size: 12px;
+    margin-right: 6px;
+  }
+}
+
+.review-comment {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #4b5563;
+  margin: 0 0 20px 0;
+  flex: 1;
+  position: relative;
+  padding-left: 20px;
+  
+  // Кавычка
+  &::before {
+    content: '"';
+    position: absolute;
+    left: 0;
+    top: -5px;
+    font-size: 32px;
+    color: rgba(245, 158, 11, 0.3);
+    font-family: Georgia, serif;
+    line-height: 1;
+  }
+  
+  // Улучшенная типографика
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.review-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 15px;
+  border-top: 1px solid rgba(245, 158, 11, 0.1);
+}
+
+.review-rating {
+  font-size: 16px;
+  color: #fbbf24;
+  letter-spacing: 2px;
+  text-shadow: 0 1px 2px rgba(251, 191, 36, 0.3);
+  
+  // Эффект свечения звёзд
+  filter: drop-shadow(0 0 2px rgba(251, 191, 36, 0.4));
+}
+
+.date {
+  font-size: 12px;
+  color: #9ca3af;
+  font-style: italic;
+  
+  // Если дата пустая, показываем "Kürzlich"
+  &:empty::after {
+    content: 'Kürzlich';
+  }
+}
+
+// Специальные стили для разных рейтингов
+.review-card:has(.review-rating:contains("★★★★★")) {
+  .review-service {
+    background: rgba(34, 197, 94, 0.1);
+    color: #22c55e;
+    border-color: rgba(34, 197, 94, 0.2);
+  }
+  
+  &::before {
+    background: linear-gradient(90deg, #22c55e 0%, #16a34a 100%);
+  }
+}
+
+// Адаптивные стили
+@media (max-width: 992px) {
+  .review {
+    padding: 80px 0;
+  }
+  
+  .reviews__title {
+    font-size: 28px;
+    margin-bottom: 50px;
+  }
+  
+  .reviews__wrp {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+  }
+  
+  .review-card {
+    padding: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .review {
+    padding: 70px 0;
+    overflow-x: hidden;
+    
+    &::after {
+      display: none;
+    }
+  }
+  
+  .reviews__title {
+    font-size: 26px;
+    margin-bottom: 40px;
+    padding: 0 20px;
+    
+    &::after {
+      width: 80px;
+    }
+  }
+  
+  .reviews__wrp {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 0 10px;
+  }
+  
+  .review-card {
+    padding: 20px;
+    border-radius: 16px;
+    
+    &:hover {
+      transform: translateY(-4px);
+    }
+  }
+  
+  .review__wrp h3 {
+    font-size: 18px;
+  }
+  
+  .review-comment {
+    font-size: 14px;
+    padding-left: 15px;
+    
+    &::before {
+      font-size: 24px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .review {
+    padding: 50px 0;
+    margin: 0 10px;
+  }
+  
+  .reviews__title {
+    font-size: 22px;
+    margin-bottom: 30px;
+    padding: 0 10px;
+    
+    &::after {
+      width: 60px;
+      height: 3px;
+      bottom: -12px;
+    }
+  }
+  
+  .reviews__wrp {
+    gap: 15px;
+    padding: 0 5px;
+  }
+  
+  .review-card {
+    padding: 18px;
+    border-radius: 14px;
+    margin: 0 5px;
+  }
+  
+  .review__wrp {
+    margin-bottom: 12px;
+    
+    h3 {
+      font-size: 16px;
+      
+      &::before {
+        font-size: 14px;
+        margin-right: 6px;
+      }
+    }
+  }
+  
+  .review-service {
+    font-size: 12px;
+    padding: 3px 10px;
+    margin-bottom: 12px;
+    
+    &::before {
+      font-size: 10px;
+      margin-right: 4px;
+    }
+  }
+  
+  .review-comment {
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    padding-left: 12px;
+    
+    &::before {
+      font-size: 20px;
+      top: -3px;
+    }
+  }
+  
+  .review-meta {
+    padding-top: 12px;
+  }
+  
+  .review-rating {
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+  
+  .date {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 375px) {
+  .review {
+    padding: 40px 0;
+    margin: 0 5px;
+  }
+  
+  .reviews__title {
+    font-size: 20px;
+    margin-bottom: 25px;
+    padding: 0 5px;
+  }
+  
+  .review-card {
+    padding: 15px;
+    border-radius: 12px;
+    margin: 0;
+  }
+  
+  .review__wrp h3 {
+    font-size: 15px;
+  }
+  
+  .review-service {
+    font-size: 11px;
+    padding: 2px 8px;
+  }
+  
+  .review-comment {
+    font-size: 12px;
+    padding-left: 10px;
+    
+    &::before {
+      font-size: 18px;
+    }
+  }
+  
+  .review-rating {
+    font-size: 13px;
+  }
+}
