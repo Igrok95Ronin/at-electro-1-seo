@@ -1,0 +1,483 @@
+.sheep {
+  padding: 80px 0;
+  background: 
+    linear-gradient(135deg, #fefbf0 0%, #ffffff 50%, #fef9e7 100%);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 30%, rgba(245, 158, 11, 0.02) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(251, 191, 36, 0.015) 0%, transparent 35%),
+      radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.01) 0%, transparent 30%);
+    pointer-events: none;
+  }
+  
+  // Декоративные элементы предупреждения
+  &::after {
+    content: '⚠️';
+    position: absolute;
+    top: 15%;
+    left: 8%;
+    font-size: 36px;
+    opacity: 0.2;
+    animation: warning-pulse 2s ease-in-out infinite;
+  }
+}
+
+@keyframes warning-pulse {
+  0%, 100% { 
+    transform: scale(1) rotate(-5deg); 
+    opacity: 0.2; 
+  }
+  50% { 
+    transform: scale(1.1) rotate(5deg); 
+    opacity: 0.4; 
+  }
+}
+
+// Анимация для головы черной овцы - мягкое покачивание влево-вправо
+@keyframes black-sheep-head {
+  0%, 100% { 
+    transform: rotate(-1deg); 
+  }
+  50% { 
+    transform: rotate(1deg); 
+  }
+}
+
+// Более мягкая анимация покачивания для других овец
+@keyframes sheep-gentle-sway {
+  0%, 100% { 
+    transform: translateY(0) rotate(0deg); 
+  }
+  50% { 
+    transform: translateY(-2px) rotate(1deg); 
+  }
+}
+
+.sheep__box {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 
+    0 15px 35px rgba(245, 158, 11, 0.08),
+    0 6px 15px rgba(245, 158, 11, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  border: 2px solid rgba(245, 158, 11, 0.1);
+  
+  // Декоративная рамка предупреждения
+  &::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: 
+      repeating-linear-gradient(
+        45deg,
+        rgba(245, 158, 11, 0.08) 0px,
+        rgba(245, 158, 11, 0.08) 10px,
+        rgba(251, 191, 36, 0.06) 10px,
+        rgba(251, 191, 36, 0.06) 20px
+      );
+    border-radius: 23px;
+    z-index: -1;
+  }
+}
+
+.sheep__content {
+  flex: 1.2;
+  max-width: 500px;
+}
+
+.sheep__title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #d97706;
+  margin: 0 0 20px 0;
+  line-height: 1.4;
+  position: relative;
+  font-family: var(--font-heading);
+  
+  // Декоративная "danger" линия
+  &::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: 0;
+    width: 80px;
+    height: 3px;
+    background: 
+      repeating-linear-gradient(
+        90deg,
+        #d97706 0px,
+        #d97706 8px,
+        #f59e0b 8px,
+        #f59e0b 16px
+      );
+    border-radius: 2px;
+  }
+  
+  strong {
+    color: #b45309;
+    font-weight: 700;
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #d97706, #f59e0b);
+      opacity: 0.3;
+    }
+  }
+  
+  // Улучшенная типографика
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.sheep__txt {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #666;
+  margin: 0;
+  position: relative;
+  padding: 15px;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.05), rgba(239, 68, 68, 0.03));
+  border-radius: 8px;
+  border-left: 3px solid #f59e0b;
+  
+
+  
+  // Улучшенная типографика
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.sheep__imgWrp {
+  flex: 1;
+  position: relative;
+  max-width: 350px;
+  
+  // Декоративные элементы вокруг SVG
+  &::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    right: -15px;
+    bottom: -15px;
+    background: 
+      conic-gradient(from 45deg, 
+        rgba(245, 158, 11, 0.04) 0deg, 
+        rgba(251, 191, 36, 0.02) 90deg, 
+        rgba(245, 158, 11, 0.03) 180deg, 
+        rgba(251, 191, 36, 0.01) 270deg
+      );
+    border-radius: 50%;
+    z-index: -1;
+    animation: rotate-warning 20s linear infinite;
+  }
+}
+
+@keyframes rotate-warning {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.sheep__img {
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  max-width: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.1));
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  
+  &:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.15));
+  }
+}
+
+// Дополнительные стили для SVG
+.sheep__imgWrp svg {
+  max-width: 100%;
+  height: auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+// Анимация головы черной овцы (третьей группы)
+.sheep__imgWrp {
+  svg {
+    // Анимируем только всю группу головы черной овцы целиком
+    g:nth-child(4) {
+      g#head {
+        animation: black-sheep-head 4s ease-in-out infinite;
+        transform-origin: center bottom;
+      }
+    }
+    
+    // Запасной селектор
+    g#head {
+      animation: black-sheep-head 4s ease-in-out infinite;
+      transform-origin: center bottom;
+    }
+  }
+}
+
+// Дополнительные декоративные элементы
+.sheep {
+  // Добавляем паттерн предупреждения
+  &::before {
+    background-image: 
+      repeating-linear-gradient(
+        135deg,
+        rgba(245, 158, 11, 0.005) 0px,
+        rgba(245, 158, 11, 0.005) 1px,
+        transparent 1px,
+        transparent 30px
+      ),
+      radial-gradient(circle at 20% 30%, rgba(245, 158, 11, 0.02), transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(251, 191, 36, 0.015), transparent 35%);
+    background-size: 
+      60px 60px,
+      100% 100%,
+      100% 100%;
+  }
+}
+
+// Responsive design
+@media (max-width: 992px) {
+  .sheep {
+    padding: 60px 0;
+  }
+  
+  .sheep__box {
+    gap: 40px;
+    padding: 35px 30px;
+  }
+  
+  .sheep__title {
+    font-size: 20px;
+    margin-bottom: 18px;
+  }
+  
+  .sheep__txt {
+    font-size: 15px;
+    padding: 12px;
+  }
+  
+  .sheep__img {
+    max-height: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sheep {
+    padding: 50px 0;
+    overflow-x: hidden; // Предотвращаем горизонтальное переполнение
+    
+    &::after {
+      display: none;
+    }
+  }
+  
+  .sheep__box {
+    flex-direction: column;
+    gap: 30px;
+    padding: 30px 25px;
+    text-align: center;
+    
+    &::before {
+      display: none;
+    }
+  }
+  
+  .sheep__content {
+    max-width: 100%;
+    order: 1;
+  }
+  
+  .sheep__imgWrp {
+    max-width: 250px;
+    margin: 0 auto;
+    order: 2;
+    
+    &::before {
+      display: none;
+    }
+  }
+  
+  .sheep__title {
+    text-align: center;
+    font-size: 18px;
+    
+    &::before {
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+    }
+  }
+  
+  .sheep__txt {
+    text-align: left;
+    font-size: 14px;
+    padding: 10px;
+  }
+  
+  .sheep__img {
+    max-height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sheep {
+    padding: 30px 0;
+    margin: 0 10px; // Добавляем отступы по бокам секции
+  }
+  
+  .sheep__box {
+    gap: 20px;
+    padding: 20px 15px;
+    border-radius: 12px;
+    margin: 0 5px; // Дополнительные отступы для box
+    overflow: hidden; // Предотвращаем выход за границы
+  }
+  
+  .sheep__title {
+    font-size: 15px;
+    margin-bottom: 12px;
+    line-height: 1.3;
+    
+    &::before {
+      width: 40px;
+      height: 2px;
+      top: -8px;
+    }
+  }
+  
+  .sheep__txt {
+    font-size: 12px;
+    line-height: 1.4;
+    padding: 6px 8px;
+  }
+  
+  .sheep__imgWrp {
+    max-width: 180px;
+    width: 100%;
+    
+    // Убираем декоративные элементы на маленьких экранах
+    &::before {
+      display: none;
+    }
+    
+    // Улучшаем SVG для мобильных
+    svg {
+      max-width: 100%;
+      height: auto;
+      width: auto !important;
+    }
+  }
+  
+  .sheep__img {
+    max-height: 130px;
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+// Добавляем медиа-запрос для очень маленьких экранов
+@media (max-width: 375px) {
+  .sheep {
+    padding: 25px 0;
+    margin: 0 5px;
+  }
+  
+  .sheep__box {
+    gap: 15px;
+    padding: 15px 10px;
+    border-radius: 10px;
+    margin: 0;
+  }
+  
+  .sheep__title {
+    font-size: 14px;
+    margin-bottom: 10px;
+    
+    &::before {
+      width: 35px;
+      height: 1px;
+      top: -6px;
+    }
+  }
+  
+  .sheep__txt {
+    font-size: 11px;
+    line-height: 1.3;
+    padding: 5px 6px;
+  }
+  
+  .sheep__imgWrp {
+    max-width: 150px;
+  }
+  
+  .sheep__img {
+    max-height: 110px;
+  }
+}
+
+// Дополнительно для экранов меньше 320px
+@media (max-width: 320px) {
+  .sheep {
+    padding: 20px 0;
+    margin: 0;
+  }
+  
+  .sheep__box {
+    gap: 12px;
+    padding: 12px 8px;
+    border-radius: 8px;
+  }
+  
+  .sheep__title {
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+  
+  .sheep__txt {
+    font-size: 10px;
+    padding: 4px;
+  }
+  
+  .sheep__imgWrp {
+    max-width: 130px;
+  }
+  
+  .sheep__img {
+    max-height: 100px;
+  }
+}
