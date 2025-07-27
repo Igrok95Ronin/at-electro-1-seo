@@ -1,0 +1,406 @@
+.company {
+  padding: 100px 0;
+  background: 
+    linear-gradient(135deg, #f1f8f1 0%, #ffffff 50%, #f8fffe 100%);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      url('../img/Stef_icons_alle_Elektroinstallationen.svg') 8% 20% / 100px 100px no-repeat,
+      url('../img/Stef_icons_alle_Netzwerktechnik.svg') 92% 80% / 120px 120px no-repeat,
+      radial-gradient(circle at 15% 30%, rgba(57, 157, 52, 0.02) 0%, transparent 40%),
+      radial-gradient(circle at 85% 70%, rgba(45, 125, 42, 0.015) 0%, transparent 35%);
+    opacity: 0.4;
+    pointer-events: none;
+  }
+  
+  // Декоративные элементы корпоративного стиля
+  &::after {
+    content: '';
+    position: absolute;
+    top: 15%;
+    right: 5%;
+    width: 150px;
+    height: 150px;
+    background: 
+      conic-gradient(from 45deg, 
+        rgba(57, 157, 52, 0.05) 0deg, 
+        rgba(45, 125, 42, 0.03) 90deg, 
+        rgba(57, 157, 52, 0.02) 180deg, 
+        rgba(45, 125, 42, 0.01) 270deg
+      );
+    border-radius: 50%;
+    opacity: 0.6;
+  }
+}
+
+.company__box {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 24px;
+  padding: 60px 50px;
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.08),
+    0 12px 24px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  
+  // Декоративная рамка в корпоративном стиле
+  &::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: 
+      linear-gradient(135deg, 
+        rgba(57, 157, 52, 0.15) 0%, 
+        rgba(45, 125, 42, 0.05) 25%, 
+        rgba(57, 157, 52, 0.02) 50%, 
+        rgba(45, 125, 42, 0.05) 75%, 
+        rgba(57, 157, 52, 0.15) 100%
+      );
+    border-radius: 27px;
+    z-index: -1;
+  }
+  
+  // Угловые декоративные элементы
+  &::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+    background: 
+      linear-gradient(45deg, transparent 30%, var(--mainColor) 30%, var(--mainColor) 70%, transparent 70%);
+    opacity: 0.1;
+  }
+}
+
+.company__title {
+  @include h2Title;
+  color: #1a1a1a;
+  margin-bottom: 40px;
+  position: relative;
+  line-height: 1.3;
+  
+  // Декоративная линия над заголовком
+  &::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 3px;
+    background: linear-gradient(90deg, 
+      transparent, 
+      var(--mainColor) 20%, 
+      #2d7d2a  50%, 
+      var(--mainColor) 80%, 
+      transparent
+    );
+    border-radius: 2px;
+  }
+  
+  // Акцент под заголовком
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--mainColor), #2d7d2a);
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(57, 157, 52, 0.3);
+  }
+  
+  // Стилизация текста
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  letter-spacing: -0.03em;
+}
+
+.company__txt {
+  font-size: 17px;
+  line-height: 1.8;
+  color: #555;
+  margin: 0 0 25px 0;
+  position: relative;
+  text-align: justify;
+  padding: 0 20px;
+  
+  // Улучшенная типографика
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  
+  // Специальное оформление для важных параграфов
+  &:nth-of-type(2) {
+    background: linear-gradient(135deg, rgba(57, 157, 52, 0.03), rgba(45, 125, 42, 0.02));
+    padding: 20px 30px;
+    border-radius: 12px;
+    border-left: 4px solid rgba(57, 157, 52, 0.3);
+    margin: 30px 0;
+    position: relative;
+    
+    &::before {
+      content: '"';
+      position: absolute;
+      top: -5px;
+      left: 10px;
+      font-size: 36px;
+      color: rgba(57, 157, 52, 0.3);
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+  }
+  
+  &:nth-of-type(4) {
+    background: linear-gradient(135deg, rgba(57, 157, 52, 0.02), rgba(45, 125, 42, 0.015));
+    padding: 20px 30px;
+    border-radius: 12px;
+    border-left: 4px solid rgba(45, 125, 42, 0.4);
+    margin: 30px 0;
+    font-weight: 500;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 30px;
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--mainColor), transparent);
+    }
+  }
+  
+  // Последний параграф - призыв к действию
+  &:last-of-type {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    background: rgba(57, 157, 52, 0.04);
+    padding: 25px 35px;
+    border-radius: 15px;
+    border: 2px solid rgba(57, 157, 52, 0.2);
+    margin: 35px 0 0 0;
+    position: relative;
+    
+    &::before {
+      content: '⚡';
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.9);
+      padding: 8px 12px;
+      border-radius: 50%;
+      font-size: 16px;
+      box-shadow: 0 4px 12px rgba(57, 157, 52, 0.2);
+    }
+  }
+}
+
+// Дополнительные декоративные элементы
+.company {
+  // Добавляем тонкий узор в фон
+  &::before {
+    background-image: 
+      url('../img/Stef_icons_alle_Elektroinstallationen.svg'),
+      url('../img/Stef_icons_alle_Netzwerktechnik.svg'),
+      repeating-linear-gradient(
+        45deg,
+        rgba(57, 157, 52, 0.01) 0px,
+        rgba(57, 157, 52, 0.01) 2px,
+        transparent 2px,
+        transparent 20px
+      ),
+      radial-gradient(circle at 15% 30%, rgba(57, 157, 52, 0.02), transparent 40%),
+      radial-gradient(circle at 85% 70%, rgba(45, 125, 42, 0.015), transparent 35%);
+    background-position: 
+      8% 20%,
+      92% 80%,
+      0 0,
+      0 0,
+      0 0;
+    background-size: 
+      100px 100px,
+      120px 120px,
+      40px 40px,
+      100% 100%,
+      100% 100%;
+  }
+}
+
+// Responsive design
+@media (max-width: 992px) {
+  .company {
+    padding: 80px 0;
+  }
+  
+  .company__box {
+    padding: 50px 40px;
+    margin: 0 20px;
+  }
+  
+  .company__title {
+    font-size: clamp(22px, 4vw, 32px);
+    margin-bottom: 35px;
+    
+    &::before {
+      width: 100px;
+      top: -18px;
+    }
+  }
+  
+  .company__txt {
+    font-size: 16px;
+    padding: 0 15px;
+    margin-bottom: 20px;
+    
+    &:nth-of-type(2),
+    &:nth-of-type(4) {
+      padding: 18px 25px;
+      margin: 25px 0;
+    }
+    
+    &:last-of-type {
+      font-size: 17px;
+      padding: 20px 30px;
+      margin: 30px 0 0 0;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .company {
+    padding: 60px 0;
+    
+    &::after {
+      display: none;
+    }
+  }
+  
+  .company__box {
+    padding: 40px 30px;
+    margin: 0 15px;
+    border-radius: 20px;
+    
+    &::after {
+      display: none;
+    }
+  }
+  
+  .company__title {
+    margin-bottom: 30px;
+    text-align: center;
+    
+    &::before {
+      width: 80px;
+      top: -15px;
+    }
+  }
+  
+  .company__txt {
+    text-align: left;
+    font-size: 15px;
+    padding: 0 10px;
+    
+    &:nth-of-type(2) {
+      &::before {
+        font-size: 28px;
+        top: -2px;
+        left: 8px;
+      }
+    }
+    
+    &:nth-of-type(2),
+    &:nth-of-type(4) {
+      padding: 15px 20px;
+      margin: 20px 0;
+    }
+    
+    &:last-of-type {
+      font-size: 16px;
+      padding: 18px 25px;
+      
+      &::before {
+        top: -10px;
+        padding: 6px 10px;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .company {
+    padding: 50px 0;
+  }
+  
+  .company__box {
+    padding: 30px 20px;
+    margin: 0 10px;
+    border-radius: 16px;
+  }
+  
+  .company__title {
+    font-size: clamp(20px, 6vw, 26px);
+    margin-bottom: 25px;
+    
+    &::before {
+      width: 60px;
+      height: 2px;
+      top: -12px;
+    }
+    
+    &::after {
+      width: 60px;
+      height: 3px;
+    }
+  }
+  
+  .company__txt {
+    font-size: 14px;
+    line-height: 1.6;
+    padding: 0 5px;
+    margin-bottom: 18px;
+    
+    &:nth-of-type(2),
+    &:nth-of-type(4) {
+      padding: 12px 18px;
+      margin: 18px 0;
+    }
+    
+    &:last-of-type {
+      font-size: 15px;
+      padding: 15px 20px;
+      margin: 25px 0 0 0;
+      
+      &::before {
+        padding: 5px 8px;
+        font-size: 12px;
+      }
+    }
+  }
+}
