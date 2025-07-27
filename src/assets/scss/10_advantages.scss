@@ -1,0 +1,322 @@
+.advantages {
+  padding: 80px 0;
+  background: 
+    linear-gradient(135deg, #ffffff 0%, #f8fffe 50%, #f1f8f1 100%);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 25% 25%, rgba(57, 157, 52, 0.02) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(45, 125, 42, 0.015) 0%, transparent 40%),
+      radial-gradient(circle at 50% 50%, rgba(57, 157, 52, 0.01) 0%, transparent 30%);
+    pointer-events: none;
+  }
+  
+  // Декоративные геометрические элементы
+  &::after {
+    content: '';
+    position: absolute;
+    top: 20%;
+    right: 8%;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(45deg, rgba(57, 157, 52, 0.05), rgba(45, 125, 42, 0.03));
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    opacity: 0.6;
+  }
+}
+
+.advantages__box {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 30px;
+  position: relative;
+  z-index: 2;
+}
+
+.advantages__wrp {
+  position: relative;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 35px 25px;
+  text-align: center;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.06),
+    0 4px 15px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  // Декоративная градиентная граница
+  &::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(135deg, 
+      rgba(57, 157, 52, 0.1), 
+      rgba(45, 125, 42, 0.05), 
+      rgba(57, 157, 52, 0.1)
+    );
+    border-radius: 22px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  // Уникальные цветовые акценты для каждой карточки
+  &:nth-child(1) {
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #3b82f6, #1e40af);
+      border-radius: 20px 20px 0 0;
+    }
+  }
+  
+  &:nth-child(2) {
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #f59e0b, #d97706);
+      border-radius: 20px 20px 0 0;
+    }
+  }
+  
+  &:nth-child(3) {
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--mainColor), #2d7d2a);
+      border-radius: 20px 20px 0 0;
+    }
+  }
+  
+  &:nth-child(4) {
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #8b5cf6, #7c3aed);
+      border-radius: 20px 20px 0 0;
+    }
+  }
+  
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 
+      0 20px 50px rgba(0, 0, 0, 0.1),
+      0 8px 25px rgba(0, 0, 0, 0.06);
+    background: rgba(255, 255, 255, 0.95);
+    
+    &::before {
+      opacity: 1;
+    }
+  }
+}
+
+.advantages__svgWrp {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 25px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  // Фоновый круг для SVG
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(57, 157, 52, 0.1), rgba(45, 125, 42, 0.05));
+    border-radius: 50%;
+    transition: all 0.3s ease;
+  }
+  
+  svg {
+    width: 45px;
+    height: 45px;
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+  }
+  
+  .advantages__wrp:hover & {
+    &::before {
+      background: linear-gradient(135deg, var(--mainColor), #2d7d2a);
+      transform: scale(1.1);
+    }
+    
+    svg {
+      transform: scale(1.1);
+      
+      path {
+        fill: white;
+      }
+    }
+  }
+}
+
+.advantages__name {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 12px 0;
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+  
+  // Улучшенная типографика
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.advantages__txt {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #666;
+  margin: 0;
+  font-weight: 400;
+  
+  // Улучшенная типографика
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Responsive design
+@media (max-width: 992px) {
+  .advantages {
+    padding: 60px 0;
+  }
+  
+  .advantages__box {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+  }
+  
+  .advantages__wrp {
+    padding: 30px 20px;
+  }
+  
+  .advantages__svgWrp {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 20px;
+    
+    svg {
+      width: 40px;
+      height: 40px;
+    }
+  }
+  
+  .advantages__name {
+    font-size: 18px;
+  }
+  
+  .advantages__txt {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .advantages {
+    padding: 50px 0;
+    
+    &::after {
+      display: none;
+    }
+  }
+  
+  .advantages__box {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+  
+  .advantages__wrp {
+    padding: 25px 18px;
+    border-radius: 16px;
+  }
+  
+  .advantages__svgWrp {
+    width: 65px;
+    height: 65px;
+    margin-bottom: 18px;
+    
+    svg {
+      width: 35px;
+      height: 35px;
+    }
+  }
+  
+  .advantages__name {
+    font-size: 17px;
+    margin-bottom: 10px;
+  }
+  
+  .advantages__txt {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 480px) {
+  .advantages {
+    padding: 40px 0;
+  }
+  
+  .advantages__box {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  
+  .advantages__wrp {
+    padding: 20px 15px;
+    border-radius: 14px;
+  }
+  
+  .advantages__svgWrp {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+    
+    svg {
+      width: 32px;
+      height: 32px;
+    }
+  }
+  
+  .advantages__name {
+    font-size: 16px;
+  }
+  
+  .advantages__txt {
+    font-size: 12px;
+  }
+}
