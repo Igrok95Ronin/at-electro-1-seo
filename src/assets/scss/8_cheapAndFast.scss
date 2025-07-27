@@ -1,0 +1,297 @@
+.cheapAndFast {
+  padding: 80px 0;
+  background: 
+    linear-gradient(135deg, #f8f9fa 0%, #ffffff 50%, #f1f8f1 100%);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 30%, rgba(57, 157, 52, 0.02) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(45, 125, 42, 0.025) 0%, transparent 35%),
+      radial-gradient(circle at 50% 20%, rgba(57, 157, 52, 0.015) 0%, transparent 30%);
+    pointer-events: none;
+  }
+  
+  // Декоративные геометрические элементы
+  &::after {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(45deg, rgba(57, 157, 52, 0.1), rgba(45, 125, 42, 0.05));
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  }
+}
+
+
+
+.cheapAndFast__box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  position: relative;
+  z-index: 2;
+  
+  // Декоративная линия между элементами
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    right: 20%;
+    height: 2px;
+    background: linear-gradient(90deg, 
+      transparent, 
+      rgba(57, 157, 52, 0.3) 20%, 
+      rgba(45, 125, 42, 0.2) 50%, 
+      rgba(57, 157, 52, 0.3) 80%, 
+      transparent
+    );
+    z-index: -1;
+  }
+}
+
+.cheapAndFast__wrp {
+  position: relative;
+  text-align: center;
+  flex: 1;
+  max-width: 200px;
+  
+  // Статичные карточки без анимации
+  
+  // Декоративные элементы для каждой карточки
+  &::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, rgba(57, 157, 52, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: -1;
+    transition: all 0.3s ease;
+  }
+  
+  &:hover::before {
+    transform: translateX(-50%) scale(1.2);
+    background: radial-gradient(circle, rgba(57, 157, 52, 0.12) 0%, transparent 70%);
+  }
+}
+
+.cheapAndFast__imgWrp {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 20px;
+  
+  // Создаем геометрическую рамку вокруг изображения
+  &::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    right: -15px;
+    bottom: -15px;
+    background: linear-gradient(135deg, rgba(57, 157, 52, 0.1), rgba(45, 125, 42, 0.05));
+    clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
+    z-index: -1;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  // Дополнительный декоративный слой
+  &::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+  }
+  
+  &:hover {
+    &::before {
+      transform: rotate(45deg) scale(1.1);
+      background: linear-gradient(135deg, rgba(57, 157, 52, 0.15), rgba(45, 125, 42, 0.08));
+    }
+    
+    &::after {
+      opacity: 1;
+    }
+  }
+}
+
+.cheapAndFast__img {
+  width: 75px;
+  height: 75px;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4a5568, #718096);
+  padding: 15px;
+  border: 2px solid rgba(57, 157, 52, 0.4);
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.08),
+    0 4px 12px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  &:hover {
+    transform: translateY(-5px) scale(1.05);
+    background: linear-gradient(135deg, var(--mainColor), #2d7d2a);
+    box-shadow: 
+      0 15px 40px rgba(57, 157, 52, 0.3),
+      0 8px 20px rgba(57, 157, 52, 0.2),
+      inset 0 2px 0 rgba(255, 255, 255, 0.2);
+  }
+}
+
+.cheapAndFast__txt {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  
+  // Декоративная подложка для текста
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--mainColor), #2d7d2a);
+    transition: width 0.3s ease;
+  }
+  
+  // Эффект появления подчеркивания
+  .cheapAndFast__wrp:hover & {
+    &::before {
+      width: 100%;
+    }
+  }
+  
+  // Улучшенная типографика
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Дополнительные декоративные элементы
+.cheapAndFast {
+  // Добавляем еще геометрические фигуры
+  &::before {
+    background-image: 
+      linear-gradient(45deg, rgba(57, 157, 52, 0.02) 25%, transparent 25%),
+      linear-gradient(-45deg, rgba(45, 125, 42, 0.015) 25%, transparent 25%);
+    background-size: 40px 40px;
+    background-position: 0 0, 20px 20px;
+  }
+}
+
+// Responsive design
+@media (max-width: 992px) {
+  .cheapAndFast {
+    padding: 60px 0;
+  }
+  
+  .cheapAndFast__box {
+    gap: 40px;
+  }
+  
+  .cheapAndFast__wrp {
+    max-width: 180px;
+  }
+  
+  .cheapAndFast__img {
+    width: 65px;
+    height: 65px;
+    padding: 12px;
+  }
+  
+  .cheapAndFast__txt {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cheapAndFast {
+    padding: 50px 0;
+    
+    &::after {
+      display: none;
+    }
+  }
+  
+  .cheapAndFast__box {
+    flex-direction: column;
+    gap: 40px;
+    
+    &::before {
+      display: none;
+    }
+  }
+  
+  .cheapAndFast__wrp {
+    max-width: 250px;
+  }
+  
+  .cheapAndFast__imgWrp {
+    margin-bottom: 15px;
+  }
+  
+  .cheapAndFast__img {
+    width: 60px;
+    height: 60px;
+    padding: 10px;
+  }
+  
+  .cheapAndFast__txt {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cheapAndFast {
+    padding: 40px 0;
+  }
+  
+  .cheapAndFast__box {
+    gap: 30px;
+  }
+  
+  .cheapAndFast__wrp {
+    max-width: 200px;
+  }
+  
+  .cheapAndFast__img {
+    width: 55px;
+    height: 55px;
+    padding: 8px;
+  }
+  
+  .cheapAndFast__txt {
+    font-size: 13px;
+    letter-spacing: 0.3px;
+  }
+}
