@@ -1,0 +1,446 @@
+.weAreHereForYou {
+  padding: 100px 0;
+  background: 
+    linear-gradient(135deg, #ffffff 0%, #f8fffe 50%, #f1f8f1 100%);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      url('../img/Stef_icons_alle_Geraetepruefung-Kopie.svg') 10% 15% / 90px 90px no-repeat,
+      url('../img/Stef_icons_alle_Elektroinstallationen.svg') 90% 85% / 80px 80px no-repeat,
+      radial-gradient(circle at 20% 40%, rgba(57, 157, 52, 0.02) 0%, transparent 40%),
+      radial-gradient(circle at 80% 60%, rgba(45, 125, 42, 0.015) 0%, transparent 35%);
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  
+  // Декоративный элемент "экстренный вызов"
+  &::after {
+    content: '🚨';
+    position: absolute;
+    top: 12%;
+    right: 8%;
+    font-size: 32px;
+    opacity: 0.3;
+    animation: pulse 3s ease-in-out infinite;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { 
+    transform: scale(1); 
+    opacity: 0.3; 
+  }
+  50% { 
+    transform: scale(1.1); 
+    opacity: 0.5; 
+  }
+}
+
+.weAreHereForYou__box {
+  display: flex;
+  align-items: flex-start;
+  gap: 60px;
+  position: relative;
+  z-index: 2;
+}
+
+.weAreHereForYou__imgWrp {
+  flex: 1;
+  position: relative;
+  max-width: 450px;
+  
+  // Стилизация под "emergency badge"
+  &::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    background: 
+      conic-gradient(from 0deg, 
+        rgba(57, 157, 52, 0.1) 0deg, 
+        rgba(45, 125, 42, 0.05) 90deg, 
+        rgba(57, 157, 52, 0.08) 180deg, 
+        rgba(45, 125, 42, 0.03) 270deg
+      );
+    border-radius: 50%;
+    z-index: -1;
+  }
+  
+  // Дополнительный декоративный слой
+  &::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: linear-gradient(45deg, 
+      rgba(57, 157, 52, 0.05), 
+      rgba(45, 125, 42, 0.02), 
+      rgba(57, 157, 52, 0.05)
+    );
+    border-radius: 20px;
+    z-index: -1;
+  }
+}
+
+.weAreHereForYou__img {
+  width: 100%;
+  height: auto;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.1),
+    0 8px 16px rgba(0, 0, 0, 0.06);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  &:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 
+      0 30px 60px rgba(0, 0, 0, 0.15),
+      0 12px 24px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.weAreHereForYou__content {
+  flex: 1.2;
+  max-width: 600px;
+}
+
+.weAreHereForYou__title {
+  @include h2Title;
+  color: #1a1a1a;
+  margin-bottom: 40px;
+  position: relative;
+  
+  // Декоративная "emergency" линия
+  &::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: 
+      repeating-linear-gradient(
+        90deg,
+        #dc2626 0px,
+        #dc2626 10px,
+        #fff 10px,
+        #fff 15px,
+        var(--mainColor) 15px,
+        var(--mainColor) 25px,
+        #fff 25px,
+        #fff 30px
+      );
+    border-radius: 2px;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 0;
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--mainColor), #2d7d2a);
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(57, 157, 52, 0.3);
+  }
+}
+
+.weAreHereForYou__ul {
+  list-style: none;
+  margin: 0 0 30px 0;
+  padding: 0;
+  display: grid;
+  gap: 15px;
+  
+  // Первый список - стиль "критичные проблемы"
+  &:first-of-type {
+    li {
+      position: relative;
+      padding: 15px 20px 15px 50px;
+      background: linear-gradient(135deg, rgba(220, 38, 38, 0.04), rgba(239, 68, 68, 0.02));
+      border-left: 4px solid #dc2626;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(220, 38, 38, 0.08);
+      font-size: 16px;
+      line-height: 1.5;
+      color: #444;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      
+      &::before {
+        content: '⚠️';
+        position: absolute;
+        left: 18px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 18px;
+      }
+      
+      &:hover {
+        transform: translateX(8px);
+        background: linear-gradient(135deg, rgba(220, 38, 38, 0.06), rgba(239, 68, 68, 0.03));
+        box-shadow: 0 8px 20px rgba(220, 38, 38, 0.12);
+        border-left-color: #b91c1c;
+      }
+    }
+  }
+  
+  // Второй список - стиль "технические проблемы"
+  &:last-of-type {
+    li {
+      position: relative;
+      padding: 15px 20px 15px 50px;
+      background: linear-gradient(135deg, rgba(57, 157, 52, 0.04), rgba(45, 125, 42, 0.02));
+      border-left: 4px solid var(--mainColor);
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(57, 157, 52, 0.08);
+      font-size: 16px;
+      line-height: 1.5;
+      color: #444;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      
+      &::before {
+        content: '🔧';
+        position: absolute;
+        left: 18px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 18px;
+      }
+      
+      &:hover {
+        transform: translateX(8px);
+        background: linear-gradient(135deg, rgba(57, 157, 52, 0.06), rgba(45, 125, 42, 0.03));
+        box-shadow: 0 8px 20px rgba(57, 157, 52, 0.12);
+        border-left-color: #2d7d2a;
+      }
+    }
+  }
+  
+  // Общие стили для всех элементов списка
+  li {
+    // Улучшенная типографика
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    
+    // Декоративная точка справа
+    &::after {
+      content: '';
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 8px;
+      height: 8px;
+      background: currentColor;
+      border-radius: 50%;
+      opacity: 0.3;
+      transition: all 0.3s ease;
+    }
+    
+    &:hover::after {
+      opacity: 0.6;
+      transform: translateY(-50%) scale(1.2);
+    }
+  }
+}
+
+// Дополнительные декоративные элементы
+.weAreHereForYou {
+  // Тонкий pattern в фоне
+  &::before {
+    background-image: 
+      url('../img/Stef_icons_alle_Geraetepruefung-Kopie.svg'),
+      url('../img/Stef_icons_alle_Elektroinstallationen.svg'),
+      repeating-linear-gradient(
+        135deg,
+        rgba(57, 157, 52, 0.005) 0px,
+        rgba(57, 157, 52, 0.005) 1px,
+        transparent 1px,
+        transparent 25px
+      ),
+      radial-gradient(circle at 20% 40%, rgba(57, 157, 52, 0.02), transparent 40%),
+      radial-gradient(circle at 80% 60%, rgba(45, 125, 42, 0.015), transparent 35%);
+    background-position: 
+      10% 15%,
+      90% 85%,
+      0 0,
+      0 0,
+      0 0;
+    background-size: 
+      90px 90px,
+      80px 80px,
+      50px 50px,
+      100% 100%,
+      100% 100%;
+  }
+}
+
+// Responsive design
+@media (max-width: 992px) {
+  .weAreHereForYou {
+    padding: 80px 0;
+  }
+  
+  .weAreHereForYou__box {
+    gap: 40px;
+  }
+  
+  .weAreHereForYou__title {
+    font-size: clamp(22px, 4vw, 32px);
+    margin-bottom: 35px;
+  }
+  
+  .weAreHereForYou__ul {
+    gap: 12px;
+    margin-bottom: 25px;
+    
+    li {
+      padding: 12px 18px 12px 45px;
+      font-size: 15px;
+      
+      &::before {
+        left: 15px;
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .weAreHereForYou {
+    padding: 60px 0;
+    
+    &::after {
+      display: none;
+    }
+  }
+  
+  .weAreHereForYou__box {
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  .weAreHereForYou__imgWrp {
+    max-width: 350px;
+    margin: 0 auto;
+    order: 2;
+    
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
+  
+  .weAreHereForYou__content {
+    max-width: 100%;
+    order: 1;
+  }
+  
+  .weAreHereForYou__title {
+    text-align: center;
+    margin-bottom: 30px;
+    
+    &::before {
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+    }
+    
+    &::after {
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+    }
+  }
+  
+  .weAreHereForYou__ul {
+    li {
+      padding: 10px 15px 10px 40px;
+      font-size: 14px;
+      
+      &::before {
+        left: 12px;
+        font-size: 14px;
+      }
+      
+      &:hover {
+        transform: translateX(4px);
+      }
+    }
+  }
+  
+  .weAreHereForYou__img {
+    max-height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .weAreHereForYou {
+    padding: 50px 0;
+  }
+  
+  .weAreHereForYou__box {
+    gap: 30px;
+  }
+  
+  .weAreHereForYou__title {
+    font-size: clamp(20px, 6vw, 26px);
+    margin-bottom: 25px;
+    
+    &::before {
+      width: 40px;
+      height: 3px;
+    }
+    
+    &::after {
+      width: 60px;
+      height: 2px;
+    }
+  }
+  
+  .weAreHereForYou__ul {
+    gap: 10px;
+    margin-bottom: 20px;
+    
+    li {
+      padding: 8px 12px 8px 35px;
+      font-size: 13px;
+      line-height: 1.4;
+      
+      &::before {
+        left: 10px;
+        font-size: 12px;
+      }
+      
+      &::after {
+        width: 6px;
+        height: 6px;
+        right: 10px;
+      }
+    }
+  }
+  
+  .weAreHereForYou__imgWrp {
+    max-width: 280px;
+  }
+  
+  .weAreHereForYou__img {
+    max-height: 250px;
+  }
+}
